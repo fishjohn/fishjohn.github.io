@@ -6,22 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://luohaoxiang.xyz">
-  <title>我的第一篇博客 | 昊翔的个人站</title>
+  <title>HEXO+github搭建自己的个人站 | 昊翔的个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一篇博客​    这是我的第一篇博客">
+  <meta name="description" content="0.前言​    如果你也在假期不甘寂寞，何不来搭建一个属于自己的个人网站，这篇文章将向你介绍如何使用HEXO框架搭建自己的个人博客网站，并且部署在Github上，并且进行相关的配置。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我的第一篇博客">
-<meta property="og:url" content="http://luohaoxiang.xyz/2021/02/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:title" content="HEXO+github搭建自己的个人站">
+<meta property="og:url" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/index.html">
 <meta property="og:site_name" content="昊翔的个人站">
-<meta property="og:description" content="第一篇博客​    这是我的第一篇博客">
+<meta property="og:description" content="0.前言​    如果你也在假期不甘寂寞，何不来搭建一个属于自己的个人网站，这篇文章将向你介绍如何使用HEXO框架搭建自己的个人博客网站，并且部署在Github上，并且进行相关的配置。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://pic4.zhimg.com/80/v2-5e1cd55d9f183fd14d75acce751b3fcb_1440w.jpg?source=1940ef5c">
-<meta property="article:published_time" content="2021-02-22T13:12:38.000Z">
-<meta property="article:modified_time" content="2021-02-23T06:13:18.023Z">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/node安装成功检测.png">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/npm安装成功检测.png">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/Hexo默认主题.jpg">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/blog目录config文件.png">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/deploy.png">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/阿里云域名.png">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/域名解析.png">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/解析记录.png">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/仓库名称.png">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/CHAME.png">
+<meta property="article:published_time" content="2021-02-23T11:00:22.000Z">
+<meta property="article:modified_time" content="2021-02-23T12:58:56.303Z">
 <meta property="article:author" content="昊翔">
-<meta property="article:tag" content="记录">
+<meta property="article:tag" content="博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://pic4.zhimg.com/80/v2-5e1cd55d9f183fd14d75acce751b3fcb_1440w.jpg?source=1940ef5c">
+<meta name="twitter:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/node安装成功检测.png">
   
     <link rel="alternative" href="/atom.xml" title="昊翔的个人站" type="application/atom+xml">
   
@@ -56,7 +65,7 @@
 		  <h1 class="header-author"><a href="/">昊翔的个人站</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">少喝可乐，多喝牛奶</p>
+		<p class="header-subtitle">好好学习，好好生活</p>
 		
 
 		<nav class="header-menu">
@@ -65,8 +74,6 @@
 				<li><a href="/">主页</a></li>
 	        
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
-	        
-				<li><a href="/about">-关于我-</a></li>
 	        
 			</ul>
 		</nav>
@@ -90,7 +97,7 @@
 		        
 					<a class="bilibili" target="_blank" href="https://space.bilibili.com/336799383" title="bilibili"><i class="icon-bilibili"></i></a>
 		        
-					<a class="mail" target="_blank" href="/luohxisme@gmail.com" title="mail"><i class="icon-mail"></i></a>
+					<a class="mail" target="_blank" href="/1258676867@qq.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -114,11 +121,9 @@
 			  <h1 class="header-author js-header-author">昊翔的个人站</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>少喝可乐，多喝牛奶<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>好好学习，好好生活<i class="icon icon-quo-right"></i></p>
 			
 			
-			
-				
 			
 				
 			
@@ -135,20 +140,18 @@
 			        
 						<a class="bilibili" target="_blank" href="https://space.bilibili.com/336799383" title="bilibili"><i class="icon-bilibili"></i></a>
 			        
-						<a class="mail" target="_blank" href="/luohxisme@gmail.com" title="mail"><i class="icon-mail"></i></a>
+						<a class="mail" target="_blank" href="/1258676867@qq.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 70%">
+				<ul style="width: 50%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
-		        
-					<li style="width: 33.333333333333336%"><a href="/about">-关于我-</a></li>
+					<li style="width: 50%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -163,28 +166,88 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-我的第一篇博客" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-HEXO-github搭建自己的个人站" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      我的第一篇博客
+      HEXO+github搭建自己的个人站
     </h1>
   
 
         
-        <a href="/2021/02/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-02-22T13:12:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-22</time>
+        <a href="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/" class="archive-article-date">
+  	<time datetime="2021-02-23T11:00:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="第一篇博客"><a href="#第一篇博客" class="headerlink" title="第一篇博客"></a>第一篇博客</h2><p>​    这是我的第一篇博客</p>
-<p><img src="https://pic4.zhimg.com/80/v2-5e1cd55d9f183fd14d75acce751b3fcb_1440w.jpg?source=1940ef5c"></p>
+        <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h2><p>​    如果你也在假期不甘寂寞，何不来搭建一个属于自己的个人网站，这篇文章将向你介绍如何使用HEXO框架搭建自己的个人博客网站，并且部署在Github上，并且进行相关的配置。</p>
+<span id="more"></span>
+
+<h2 id="1-前期准备"><a href="#1-前期准备" class="headerlink" title="1.前期准备"></a>1.前期准备</h2><h3 id="1-1安装git"><a href="#1-1安装git" class="headerlink" title="1.1安装git"></a>1.1安装git</h3><p>从Git官网下载：<a href="https://link.zhihu.com/?target=https://git-scm.com/download/win">Git - Downloading Package</a> 现在的机子基本都是64位的，选择64位的安装包，下载后安装，在命令行里输入git测试是否安装成功。安装成功后，请将你的Git与GitHub帐号绑定。</p>
+<h3 id="1-2安装Node-js"><a href="#1-2安装Node-js" class="headerlink" title="1.2安装Node.js"></a>1.2安装Node.js</h3><p>Hexo基于Node.js，Node.js下载地址：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Download | Node.js</a> 下载安装包，注意安装Node.js会包含环境变量及npm的安装，安装后，检测Node.js是否安装成功，在命令行中输入<code>node -v</code>：</p>
+<img src="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/node安装成功检测.png" style="zoom:80%;">
+
+<p>检测npm是否安装成功,在命令行中输入<code>npm -v</code>：</p>
+<img src="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/npm安装成功检测.png" style="zoom: 80%;">
+
+
+
+
+
+<h3 id="1-3安装Hexo"><a href="#1-3安装Hexo" class="headerlink" title="1.3安装Hexo"></a>1.3安装Hexo</h3><p>Hexo就是我们的个人博客网站的框架， 这里需要自己在电脑常里创建一个文件夹，可以命名为Blog，Hexo框架与以后你自己发布的网页都在这个文件夹中。</p>
+<p>进入创建的Blog文件夹，在此文件夹中打开命令行,使用npm命令<code>npm install -g hexo-cli </code>进行安装。</p>
+<p>安装完成后，初始化我们的博客，输入：<code>hexo init blog</code>此时会建立一个blog的文件夹，<code>cd blog</code>进入blog 文件夹，为了检测我们的网站雏形，分别按顺序输入以下三条命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new test_my_site</span><br><span class="line"></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+
+<p>完成这些命令后，打开浏览器输入<code>http://localhost:4000/</code>，我们就可以看到建立的博客网站雏形</p>
+<img src="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/Hexo默认主题.jpg" style="zoom:80%;">
+
+<p>Hexo更具体的使用方法请参看 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/">Hexo官网</a>。</p>
+<h2 id="2-推送网站"><a href="#2-推送网站" class="headerlink" title="2.推送网站"></a>2.推送网站</h2><p>上面我们只做到了在本地浏览，为了使网站能被更多人访问，我们需要将网站发布。</p>
+<h3 id="2-1Github创建个人仓库"><a href="#2-1Github创建个人仓库" class="headerlink" title="2.1Github创建个人仓库"></a>2.1Github创建个人仓库</h3><p>在此我们使用github pages服务搭建，这样做的好处有：</p>
+<ol>
+<li>全是静态文件，访问速度快；</li>
+<li>免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；</li>
+<li>博客内容可以轻松打包、转移、发布到其它平台；</li>
+</ol>
+<p>点击GitHub中的New repository创建新仓库，仓库名应该为：username.github.io(此处username用你的github用户名代替)，这是<strong>固定的写法</strong>，比如我的用户名是fishjohn,因此仓库命名为fishjohn.github.io。</p>
+<h3 id="2-2站点绑定"><a href="#2-2站点绑定" class="headerlink" title="2.2站点绑定"></a>2.2站点绑定</h3><p>建立好存放的仓库以后，我们需要在blog的根目录中的_config.yml进行站点配置，在此我们要注意区分根目录中的_config.yml文件和themes目录下面的_config.yml文件，后者是对网页主题内容的配置。</p>
+<img src="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/blog目录config文件.png" style="zoom:80%;">
+
+<p>下一步我们就将Hexo和GitHub关联起来，打开blog的根目录中的_config.yml文件，找到deploy根，将其修改成</p>
+<img src="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/deploy.png" style="zoom:80%;">
+
+<p>其中repo替换成你的github博客仓库地址。其实就是给hexo d 这个命令做相应的配置，让hexo知道你要把blog部署在哪个位置，很显然，我们部署在我们GitHub的仓库里。最后安装Git部署插件，输入命令：</p>
+<p><code>npm install hexo-deployer-git --save</code></p>
+<p>这时，我们分别输入三条命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo g </span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>其实第三条的 hexo d 就是部署网站命令，d是deploy的缩写。完成后，打开浏览器，在地址栏输入你的放置个人网站的仓库路径，即<code>xxx.github.io</code>，你就会发现你的博客已经上线了，可以在网络上被访问了。</p>
+<h2 id="3-绑定域名"><a href="#3-绑定域名" class="headerlink" title="3.绑定域名"></a>3.绑定域名</h2><p>经过上面的操作，我们已经可以在互联网上访问到我们的博客网站了，但是却是通过<code>xxx.github.io</code>的地址，如果我们想使用自己的个性化域名，我们就要将其绑定到我们自己的域名中，这前提是我们需要有一个自己的域名。</p>
+<h3 id="3-1购买个人网站域名"><a href="#3-1购买个人网站域名" class="headerlink" title="3.1购买个人网站域名"></a>3.1购买个人网站域名</h3><p>如果你有空闲的域名地址，直接使用即可，若没有我们可以通过阿里云或是腾讯云等网站代购自己的域名，我使用的是阿里云，进入 <a target="_blank" rel="noopener" href="https://wanwang.aliyun.com/domain/">阿里云域名购买</a>选购即可，不同后缀的域名价钱也不一样，由于是个人博客需要，我选购的是.xyz的后缀，一年只需要9块钱。</p>
+<img src="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/阿里云域名.png" style="zoom: 80%;">
+
+<p>在注册好域名后我们进行域名的解析，进入阿里云控制台域名处，如下图，点击域名解析:</p>
+<img src="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/域名解析.png" style="zoom:80%;">
+
+<p>在设置解析页面，添加以下三条记录：</p>
+<img src="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/解析记录.png" style="zoom:80%;">
+
+<p>在此之后我们需要在Github端设置，登录GitHub，进入之前创建的仓库，点击settings，设置Custom domain，输入你的域名<img src="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/仓库名称.png" style="zoom:80%;"></p>
+<p>点击save保存。第三步，进入本地博客文件夹 ，进入blog/source目录下，创建一个记事本文件，输入你的域名，对，只要写进你自己的域名即可。如果带有www，那么以后访问的时候必须带有www完整的域名才可以访问，但如果不带有www，以后访问的时候带不带www都可以访问。所以建议，不要带有www。</p>
+<img src="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/CHAME.png" style="zoom:100%;">
+
+<p>保存，命名为CNAME ，注意保存成<strong>所有文件</strong>而不是<strong>txt文件</strong>。</p>
+<p>完成这三步，进入blog目录中，按住shift键右击打开命令行，依次输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>这时候打开浏览器在地址栏输入你的个性化域名将会直接进入你自己搭建的网站。</p>
 
       
 
@@ -219,7 +282,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">记录</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
         		</li>
       		
 		</ul>
@@ -275,7 +338,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://luohaoxiang.xyz/2021/02/22/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -399,7 +462,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">记录</a>
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
               </li>
             
             <div class="clearfix"></div>
@@ -450,7 +513,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">广东工业大学机械电子工程的一名学生&lt;br&gt;&lt;br&gt;正在学习中...&lt;br&gt;谢谢观看</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">广东工业大学机械电子工程的一名学生&lt;br&gt;＜（＾－＾）＞</div>
   	  	
     	</section>
     
