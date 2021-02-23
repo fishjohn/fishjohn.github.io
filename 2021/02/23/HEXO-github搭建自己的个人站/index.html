@@ -25,8 +25,11 @@
 <meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/解析记录.png">
 <meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/仓库名称.png">
 <meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/CHAME.png">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/theme设成yilia.png">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/site.png">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/头像标注.png">
 <meta property="article:published_time" content="2021-02-23T11:00:22.000Z">
-<meta property="article:modified_time" content="2021-02-23T12:58:56.303Z">
+<meta property="article:modified_time" content="2021-02-23T13:31:16.355Z">
 <meta property="article:author" content="昊翔">
 <meta property="article:tag" content="博客">
 <meta name="twitter:card" content="summary">
@@ -248,6 +251,20 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
 <p>这时候打开浏览器在地址栏输入你的个性化域名将会直接进入你自己搭建的网站。</p>
+<h2 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h2><p>如果你不太喜欢原生默认的主题（大概率），那么我们可以在 <a target="_blank" rel="noopener" href="https://hexo.io/themes/">主题网站</a>中更换寻找自己喜欢的主题并进行替换，我自己使用的是 <a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia">Yilia主题</a>，可以查看在 <a href="http://luohaoxiang.xyz/">我的博客</a>中查看效果，找到主题后，在blog目录中（就是命令行的位置处于blog目录）打开命令行输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:litten&#x2F;hexo-theme-yilia.git</span><br></pre></td></tr></table></figure>
+
+<p>这是将Yilia主题下载到blog目录的themes文件夹中。</p>
+<p>打开<strong>站点</strong>的_config.yml配置文件，修改主题为theme里的主题的文件夹名称</p>
+<img src="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/theme设成yilia.png" style="zoom:80%;">
+
+<p>打开<strong>主题</strong>的_config.yml配置文件，在最顶端加入作者名称和副标题</p>
+<img src="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/site.png" style="zoom:80%;">
+
+<p>设置favicon(网页上栏的图标)和avatar（头像）图片位置</p>
+<img src="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/头像标注.png" style="zoom:80%;">
+
+<p>还有一系列的栏目设置都可以参考 <a target="_blank" rel="noopener" href="https://github.com/litten/BlogBackup">Yilia作者的博客备份</a></p>
 
       
 
