@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://luohaoxiang.xyz">
-  <title>昊翔的个人站</title>
+  <title>Archives: 2021/8 | 昊翔的个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="欢迎来到罗昊翔的博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="昊翔的个人站">
-<meta property="og:url" content="http://luohaoxiang.xyz/index.html">
+<meta property="og:url" content="http://luohaoxiang.xyz/archives/2021/08/index.html">
 <meta property="og:site_name" content="昊翔的个人站">
 <meta property="og:description" content="欢迎来到罗昊翔的博客">
 <meta property="og:locale" content="en_US">
@@ -155,130 +155,34 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-2021年华为嵌入式软件大赛-算法组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
     
-      <header class="article-header">
-        
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/" class="archive-article-date">
+  	<time datetime="2021-08-12T13:19:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-12</time>
+</a>
+        </div>
+    	 
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/">2021年华为嵌入式软件大赛--算法组</a>
+      <a class="archive-article-title" href="/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/">2021年华为嵌入式软件大赛--算法组</a>
     </h1>
   
 
-        
-        <a href="/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/" class="archive-article-date">
-  	<time datetime="2021-08-12T13:19:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h2><p>本文记录了正经队在2021年华为嵌入式软件大赛–算法组中的代码思路。在此比赛中解决的是星际光通信网络中的卫星位置规划问题。</p>
-<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><ol>
-<li>赛题解析</li>
-<li>数据预处理</li>
-<li>蚁群算法解决SCP</li>
-<li>结果输出</li>
-</ol>
-<h2 id="1-赛题解析"><a href="#1-赛题解析" class="headerlink" title="1. 赛题解析"></a>1. 赛题解析</h2><p>赛题详情请参看赛题任务书，以下简要对赛题做分析解读。</p>
-<h3 id="1-1-输入"><a href="#1-1-输入" class="headerlink" title="1.1 输入"></a>1.1 输入</h3><ol>
-<li><em>节点</em></li>
-</ol>
-<p>此赛题的输入为一个给定的卫星网络连接图，分为<strong>基地</strong>和<strong>卫星</strong>两类站点：</p>
-<p>基地：作为网络图的起点</p>
-<p>卫星：</p>
-<ul>
-<li>中转卫星：中转节点</li>
-<li>接收卫星：作为网络图的终点</li>
-</ul>
-<ol start="2">
-<li><em>功耗</em><ul>
-<li>路径功耗：与距离成线性相关</li>
-<li>建站功耗：每颗接收卫星的功耗（占大头）</li>
-</ul>
-</li>
-<li><em>约束条件</em><ul>
-<li>路径重合约束：不同的接收卫星与其覆盖的基地的路径不得重合</li>
-<li>路径长度约束：发射基站经过中转卫星到接收卫星路径总长度需满足最大路径长度约束</li>
-</ul>
-</li>
-</ol>
-<p>输入图样例如下：</p>
-<img src="/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/卫星连接图输入图示.png" style="zoom:80%;">
-
-
-<h3 id="1-2目标"><a href="#1-2目标" class="headerlink" title="1.2目标"></a>1.2目标</h3><ol>
-<li>所有基站都要有且仅有一个接收卫星管理，并给出所有发射基站到管理它的接收卫星的路径</li>
-<li>解 满足所有约束条件</li>
-<li>通过规划，使得网络总功耗最低，即路径尽可能短，建站尽可能少（初赛）</li>
-</ol>
-<h2 id="2-数据预处理"><a href="#2-数据预处理" class="headerlink" title="2.数据预处理"></a>2.数据预处理</h2><p>本解决方案引入了两个图结构：</p>
-<ul>
-<li><em>aGraph</em>: 当且仅当不同节点之间存在边时有连线</li>
-<li><em>bGraph</em>: 当且仅当卫星和基站存在路径长度小于最大长度限制时有连线</li>
-</ul>
-<p><em>引入二部图</em>：我们使用了<strong>Dijkstra算法</strong>计算每颗卫星到达基站的最短路径，若最短路径满足路径长度约束，则将这一对卫星-基地连接加入到bGraph中，<strong>即 此卫星能覆盖到此基地</strong>，bGraph的图示样例如下：<br><img src="/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/bGraph连接示意图.jpg" style="zoom:80%;"></p>
-<p>如上图所示，显而易见，我们需要解决的问题就是选择sate组合，保证所有的base都能被覆盖，并且尽可能地追求sate组合所消耗的功率最小（路径功耗+建站功耗），此问题即转化为<em>集合覆盖问题（SCP）</em></p>
-<h2 id="3-蚁群算法解决SCP"><a href="#3-蚁群算法解决SCP" class="headerlink" title="3.蚁群算法解决SCP"></a>3.蚁群算法解决SCP</h2><p>集合覆盖问题是典型的组合优化问题，如上的图中，我们需要找到一个接收卫星的组合，以覆盖所有的基地，并且要求这个组合的总功耗最小，渴望得到一个“最优解”，我们有几种思路呢？</p>
-<img src="/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/SCP数学模型.png" style="zoom:80%;">
-
-<ol>
-<li><p>穷举法</p>
-<p>在数学模型上，我们将选中的卫星标记为1，未选中的卫星标记为0，可以穷举不同的解的组合并计算其功耗，在卫星和基地数量有限的情况下，必然能找出一个最优解，但是时间复杂度非常感人，数据集中卫星基地总数在四位数以上，赛题要求在单线程条件下3分钟内求出结果，此法不应在比赛中使用。</p>
-</li>
-<li><p>贪心算法</p>
-<p>贪心算法思想是下一步的利益最大化，在此问题中贪的是卫星覆盖基地数，即在基地未被完全覆盖时，总是选择下一个能覆盖最多的未被覆盖基地的卫星，伪代码如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while(所有基地未被完全覆盖)&#123;</span><br><span class="line">	此次循环选中卫星 :&#x3D; 能覆盖最多的未被覆盖基地的卫星</span><br><span class="line">	Insert 此次循环选中卫星</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其实我们还可以将贪心算法改进一下，我们将比较成分从新覆盖基地数newCoverNums替换成如下计算公式求得的权重：weight = newCoverNums/(SumDists * coeff + Psite)，因为我们期望选出总功耗更小，覆盖新基地数更多的卫星。</p>
-<p>但是众所周知，贪心算法可以得到一个大体满意的可行解，但往往不是最优解，如以下情况：</p>
-<img src="/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/贪心算法失败举例.png" style="zoom:80%;">
-
-<p>根据上述贪心算法，我们第一步会先选择新覆盖基地数最多的S2或是S3(皆为6个新覆盖基地数)中的一个集合，选择它们两个中总功耗更少的一位，即{S2}或{S3}，再执行一轮上述算法，得解的组合{S2,S4}或{S3,S1}，但我们不能保证第一步最优的解在第二步执行之后还是最优的，因为假设第一步选择{S2}优于{S3},但是选择{S3,S1}的组合可能会优于{S2,S4},因此贪心算法不能保证得到的结果是最优解。</p>
-</li>
-<li><p>蚁群算法</p>
-<p>蚁群算法来源于蚂蚁在寻找食物过程中发现最短路径的行为。我们将上述集合覆盖问题的解抽象成蚁群寻找最短路径，蚁群搜寻的过程是一系列的迭代，在每一次迭代中，每一只蚂蚁都在信息素和启发式因素的指导下进行搜索、构建解，在一轮迭代过后，会根据本轮迭代的最优结果更新信息素，因此在下一次迭代中，就会在这一块“可靠”的区域继续优化，寻找一个更优的解，当达到迭代次数上限或运行时间超过上限值时，算法停止。</p>
-<p>下面介绍一下每只蚂蚁运行的过程：</p>
-<ol>
-<li><p>若基地集合未被完全覆盖，<strong>随机</strong>选取一颗基地base，否则转入步骤3</p>
-</li>
-<li><p>为选中的基地选择一颗接收卫星</p>
-<ul>
-<li>通过bGraph的邻接表获得能覆盖选中base的卫星列表</li>
-<li>为每颗候选卫星计算被选中的概率</li>
-<li>轮盘赌法，决定哪颗卫星作为选中base的接收卫星</li>
-<li>将选中的卫星插入接收卫星（解）的列表，更新未覆盖基地集合，返回步骤1</li>
-</ul>
-</li>
-<li><p>local search: 删除冗余的卫星，由于选择卫星的顺序不确定，可能导致出现冗余卫星的情况，如下图，卫星2是冗余的，我们需将冗余的卫星从集合解中删除</p>
-<img src="/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/卫星冗余示意图.jpg" style="zoom:100%;">
-
-<p>在每轮迭代过后，每一只蚂蚁都构建了一个完整的解，首先为了让蚂蚁忘却部分的历史经验，我们需要模拟信息素挥发，然后蚂蚁会在最优解决方案所包含的列沉淀信息素（注意是历史最优解），为了防止搜索停滞，信息素浓度范围应控制在 [$\tau_{min}$,$\tau_{max}$],更新规则如下：</p>
-<img src="/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/信息素更新规则公式.png" style="zoom:100%;">
-
-<p>以上公式中$\rho$是信息素挥发因子，取值范围[0,1]，$\Delta\tau_j$等于最优解决方案功耗的倒数。</p>
-<h2 id="4-结果输出"><a href="#4-结果输出" class="headerlink" title="4.结果输出"></a>4.结果输出</h2></li>
-</ol>
-<p>由以上蚁群算法的迭代过后，我们可以获得一个较优的接收卫星集合，赛题要求输出所有基地到其接收卫星的路径。我们的策略分为以下几个步骤：</p>
-</li>
-<li><p>连接 基地-接收卫星</p>
-<ul>
-<li>为每颗基地选择最邻近的接收卫星（根据数据预处理中计算的距离）</li>
-<li></li>
-</ul>
-</li>
-<li></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -290,117 +194,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
-    <article id="post-HEXO-github搭建自己的个人站" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
+  
+    </div></section>
+  
+
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/">HEXO+github搭建自己的个人站</a>
-    </h1>
-  
-
-        
-        <a href="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/" class="archive-article-date">
-  	<time datetime="2021-02-23T11:00:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h2><p>​    如果你也在假期不甘寂寞，何不来搭建一个属于自己的个人网站，这篇文章将向你介绍如何使用HEXO框架搭建自己的个人博客网站，并且部署在Github上，并且进行相关的配置。</p>
-        
-          <a class="article-more-a" href="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
 
 
           </div>
@@ -422,9 +228,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
+		isHome: false,
 		isPost: false,
-		isArchive: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

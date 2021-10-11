@@ -6,18 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://luohaoxiang.xyz">
-  <title>昊翔的个人站</title>
+  <title>2021年华为嵌入式软件大赛--算法组 | 昊翔的个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="欢迎来到罗昊翔的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="昊翔的个人站">
-<meta property="og:url" content="http://luohaoxiang.xyz/index.html">
+  <meta name="description" content="0.前言本文记录了正经队在2021年华为嵌入式软件大赛–算法组中的代码思路。在此比赛中解决的是星际光通信网络中的卫星位置规划问题。 概览 赛题解析 数据预处理 蚁群算法解决SCP 结果输出  1. 赛题解析赛题详情请参看赛题任务书，以下简要对赛题做分析解读。 1.1 输入 节点  此赛题的输入为一个给定的卫星网络连接图，分为基地和卫星两类站点： 基地：作为网络图的起点 卫星：  中转卫星：中转节点">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2021年华为嵌入式软件大赛--算法组">
+<meta property="og:url" content="http://luohaoxiang.xyz/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/index.html">
 <meta property="og:site_name" content="昊翔的个人站">
-<meta property="og:description" content="欢迎来到罗昊翔的博客">
+<meta property="og:description" content="0.前言本文记录了正经队在2021年华为嵌入式软件大赛–算法组中的代码思路。在此比赛中解决的是星际光通信网络中的卫星位置规划问题。 概览 赛题解析 数据预处理 蚁群算法解决SCP 结果输出  1. 赛题解析赛题详情请参看赛题任务书，以下简要对赛题做分析解读。 1.1 输入 节点  此赛题的输入为一个给定的卫星网络连接图，分为基地和卫星两类站点： 基地：作为网络图的起点 卫星：  中转卫星：中转节点">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/卫星连接图输入图示.png">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/bGraph连接示意图.jpg">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/SCP数学模型.png">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/贪心算法失败举例.png">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/卫星冗余示意图.jpg">
+<meta property="og:image" content="http://luohaoxiang.xyz/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/信息素更新规则公式.png">
+<meta property="article:published_time" content="2021-08-12T13:19:00.000Z">
+<meta property="article:modified_time" content="2021-10-11T06:30:42.667Z">
 <meta property="article:author" content="昊翔">
-<meta property="article:tag" content="Robot,SLAM,OpenCV,ROS">
+<meta property="article:tag" content="比赛">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://luohaoxiang.xyz/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/卫星连接图输入图示.png">
   
     <link rel="alternative" href="/atom.xml" title="昊翔的个人站" type="application/atom+xml">
   
@@ -153,16 +162,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-2021年华为嵌入式软件大赛-算法组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-2021年华为嵌入式软件大赛-算法组" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/">2021年华为嵌入式软件大赛--算法组</a>
+    <h1 class="article-title" itemprop="name">
+      2021年华为嵌入式软件大赛--算法组
     </h1>
   
 
@@ -275,6 +282,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝咖啡<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -293,16 +321,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://luohaoxiang.xyz/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HEXO+github搭建自己的个人站</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -322,84 +409,14 @@
 
 
 
-
   
-    <article id="post-HEXO-github搭建自己的个人站" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/">HEXO+github搭建自己的个人站</a>
-    </h1>
   
 
-        
-        <a href="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/" class="archive-article-date">
-  	<time datetime="2021-02-23T11:00:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h2><p>​    如果你也在假期不甘寂寞，何不来搭建一个属于自己的个人网站，这篇文章将向你介绍如何使用HEXO框架搭建自己的个人博客网站，并且部署在Github上，并且进行相关的配置。</p>
-        
-          <a class="article-more-a" href="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">博客</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/23/HEXO-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E7%AB%99/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+  
 
   
+
   
 
 
@@ -422,8 +439,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
