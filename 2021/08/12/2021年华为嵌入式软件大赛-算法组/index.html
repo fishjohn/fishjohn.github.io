@@ -113,7 +113,7 @@
 <meta property="og:image" content="http://luohaoxiang.xyz/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/last网络图示.png">
 <meta property="og:image" content="http://luohaoxiang.xyz/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/QA2.png">
 <meta property="article:published_time" content="2021-08-12T13:19:00.000Z">
-<meta property="article:modified_time" content="2021-10-13T09:21:06.356Z">
+<meta property="article:modified_time" content="2021-10-13T12:07:05.213Z">
 <meta property="article:author" content="昊翔">
 <meta property="article:tag" content="比赛">
 <meta name="twitter:card" content="summary">
@@ -290,7 +290,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/head2.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -359,22 +359,22 @@
 <p>赛题详情请参看赛题任务书，以下简要对赛题做分析解读。</p>
 <h3 id="输入">1.1 输入</h3>
 <ol type="1">
-<li><p>节点</p>
+<li><p><strong>节点</strong></p>
 <p>此赛题的输入为一个给定的卫星网络连接图，分为<strong>基地</strong>和<strong>卫星</strong>两类站点：</p>
-<ol type="1">
+<ul>
 <li>基地：作为网络图的起点</li>
 <li>卫星：
 <ul>
 <li>中转卫星：中转节点</li>
 <li>接收卫星：作为网络图的终点</li>
 </ul></li>
-</ol></li>
-<li><p>功耗</p>
+</ul></li>
+<li><p><strong>功耗</strong></p>
 <ul>
 <li>路径功耗：与距离成线性相关</li>
 <li>建站功耗：每颗接收卫星的功耗</li>
 </ul></li>
-<li><p>约束条件</p>
+<li><p><strong>约束条件</strong></p>
 <ul>
 <li>路径重合约束：不同的接收卫星与其覆盖的基地的路径不得重合</li>
 <li>路径长度约束：发射基站经过中转卫星到接收卫星路径总长度需满足最大路径长度约束</li>
@@ -404,9 +404,9 @@
 <img src="/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/SCP数学模型.png" style="zoom:80%;">
 </div>
 <ol type="1">
-<li><p>穷举法</p>
+<li><p><strong>穷举法</strong></p>
 <p>在数学模型上，我们将选中的卫星标记为1，未选中的卫星标记为0，可以穷举不同的解的组合并计算其功耗，在卫星和基地数量有限的情况下，必然能找出一个最优解，但是时间复杂度非常感人，数据集中卫星基地总数在四位数以上，赛题要求在单线程条件下5分钟内求出结果，此法不应在比赛中使用。</p></li>
-<li><p>贪心算法</p>
+<li><p><strong>贪心算法</strong></p>
 <p>贪心算法思想是下一步的利益最大化，在此问题中贪的是卫星覆盖基地数，即在基地未被完全覆盖时，总是选择下一个能覆盖最多的未被覆盖基地的卫星，伪代码如下 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while(所有基地未被完全覆盖)&#123;</span><br><span class="line">	此次循环选中卫星 :&#x3D; 能覆盖最多的未被覆盖基地的卫星</span><br><span class="line">	Insert 此次循环选中卫星</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 其实我们还可以将贪心算法改进一下，我们将比较成分从新覆盖基地数newCoverNums替换成如下计算公式求得的权重：</p>
 <center>
 <p>weight = newCoverNums/(SumDists * coeff + Psite)</p>
@@ -416,7 +416,7 @@
 <img src="/2021/08/12/2021%E5%B9%B4%E5%8D%8E%E4%B8%BA%E5%B5%8C%E5%85%A5%E5%BC%8F%E8%BD%AF%E4%BB%B6%E5%A4%A7%E8%B5%9B-%E7%AE%97%E6%B3%95%E7%BB%84/贪心算法失败举例.png" style="zoom:80%;">
 </div>
 <p>根据上述贪心算法，我们第一步会先选择新覆盖基地数最多的S2或是S3(皆为6个新覆盖基地数)中的一个集合，选择它们两个中总功耗更少的一位，即{S2}或{S3}，再执行一轮上述算法，得解的组合{S2,S4}或{S3,S1}，但我们不能保证第一步最优的解在第二步执行之后还是最优的，因为假设第一步选择{S2}优于{S3},但是选择{S3,S1}的组合可能会优于{S2,S4},因此贪心算法不能保证得到的结果是最优解。</p></li>
-<li><p>蚁群算法</p>
+<li><p><strong>蚁群算法</strong></p>
 <p>蚁群算法来源于蚂蚁在寻找食物过程中发现最短路径的行为。我们将上述集合覆盖问题的解抽象成蚁群寻找最短路径，蚁群搜寻的过程是一系列的迭代，在每一次迭代中，每一只蚂蚁都在信息素和启发式因素的指导下进行搜索、构建解，在一轮迭代过后，会根据本轮迭代的最优结果更新信息素，因此在下一次迭代中，就会在这一块“可靠”的区域继续优化，寻找一个更优的解，当达到迭代次数上限或运行时间超过上限值时，算法停止。 下面介绍一下每只蚂蚁运行的过程：</p>
 <ol type="1">
 <li>若基地集合未被完全覆盖，<strong>随机</strong>（为了保证搜索的发散性）选取一颗基地base，否则转入步骤3</li>
@@ -491,9 +491,9 @@
 </ol>
 <h2 id="qa">6. Q&amp;A</h2>
 <ol type="1">
-<li><p>为什么用蚁群算法求出的卫星集合解可以满足路径长度约束？</p>
+<li><p><strong>为什么用蚁群算法求出的卫星集合解可以满足路径长度约束？</strong></p>
 <p>因为我们在构造二部图时，加入的边的前提条件就是必须满足路径长度约束的基地-接收卫星连接，在二部图中为每颗基地选择接收卫星时都在路径长度的约束内。</p></li>
-<li><p>为什么最终的解满足路径重合约束呢？</p>
+<li><p><strong>为什么最终的解满足路径重合约束呢？</strong></p>
 <p>由于我们通过蚁群算法求出一个卫星集合解之后，<strong>为每座基地都是选择在集合中最邻近的接收卫星</strong>，为什么这么做就可以满足路径重合约束呢？我们在此可以做一个数学证明（非数学专业，证明过程可能不严谨，请见谅）：</p>
 <p>假设我们得到的一个接收卫星集合{<span class="math inline">\({D_1}\)</span>,<span class="math inline">\({D_2}\)</span>},其能覆盖基地<span class="math inline">\({S_1}\)</span>、<span class="math inline">\({S_2}\)</span>，如下图所示的卫星网络连接图，<span class="math inline">\({L_1}\)</span>、<span class="math inline">\({L_2}\)</span>、<span class="math inline">\({L_3}\)</span>，<span class="math inline">\({L_4}\)</span>、<span class="math inline">\({L_5}\)</span>都大于0</p>
 <div data-align="center">
@@ -503,6 +503,13 @@
 <p><span class="math inline">\(\begin{equation} \left\{  \begin{array}{lr}  {L_1}+{L_2}+{L_3}\leq{L_1}+{L_5}, &amp; \\  {L_4}+{L_2}+{L_5}\leq{L_3}+{L_4}, &amp;  \end{array} \right. \end{equation}\)</span></p>
 <p>联立上式解的：<span class="math inline">\({L_2}\leq0\)</span>，又因为<span class="math inline">\({L_2}&gt;0\)</span>,与假设相违背。</p>
 <p>所以<span class="math inline">\({S_1}\)</span>-&gt;<span class="math inline">\({D_1}\)</span>，<span class="math inline">\({S_2}\)</span>-&gt;<span class="math inline">\({D_2}\)</span>不同时为各自的最短路径，因此满足路径长度约束。</p></li>
+<li><p><strong>复赛和决赛的策略如何？</strong></p>
+<p>复赛和决赛中分别新增了一项约束条件：</p>
+<ul>
+<li>复赛赛题在初赛基础上加入了发射基站功耗系数限制</li>
+<li>决赛赛题在复赛基础上加入了站点功耗约束</li>
+</ul>
+<p>总的来说，复赛和决赛赛题加入的约束并没有非常大的影响我们的解题模型，我们根据新添加的约束调整蚁群算法搜寻接收卫星集合解的策略，蚁群算法中的启发函数具有很大的灵活性，可以通过修整启发函数计算方法来使蚂蚁感知作出有利的选择，例如在复赛中，对于加入的基站功耗系数Csite，我们可以将其视作若新覆盖此座基地可以新增覆盖Csite，但是我们并没有把启发函数编写的太接近于目标函数，因为如果蚁群中每只蚂蚁都变得很“聪明”，蚁群算法就会失去发散性而很容易陷入局部最优解。</p></li>
 </ol>
 
       
@@ -594,20 +601,11 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/images/head2.jpg"
                alt="" />
           <p class="site-author-name" itemprop="name"></p>
            
@@ -664,22 +662,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">0.前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%9B%E9%A2%98%E8%A7%A3%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">1. 赛题解析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5"><span class="nav-number">2.1.</span> <span class="nav-text">1.1 输入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87"><span class="nav-number">2.2.</span> <span class="nav-text">1.2目标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E6%80%9D%E8%B7%AF"><span class="nav-number">3.</span> <span class="nav-text">2. 整体思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E9%83%A8%E5%9B%BE"><span class="nav-number">4.</span> <span class="nav-text">3. 二部图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%9A%81%E7%BE%A4%E7%AE%97%E6%B3%95%E8%A7%A3%E5%86%B3scp"><span class="nav-number">5.</span> <span class="nav-text">4. 蚁群算法解决SCP</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%93%E6%9E%9C%E8%BE%93%E5%87%BA"><span class="nav-number">6.</span> <span class="nav-text">5. 结果输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qa"><span class="nav-number">7.</span> <span class="nav-text">6. Q&amp;A</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
